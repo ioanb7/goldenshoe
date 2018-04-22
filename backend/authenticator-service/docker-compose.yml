@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  authenticator-service:
+    image: authenticator-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - goldenshoe-network

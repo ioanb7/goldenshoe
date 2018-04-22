@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PackageId>ioanb7.Messages</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
+    <Authors>Paul Hiles</Authors>
+    <Company>ioanb7</Company>
+    <Product>ioanb7.Messages</Product>
+    <Description>ioanb7's Messages for Akka</Description>
+  </PropertyGroup>
+  
+    <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+  
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <OutputPath>/app/nuget/</OutputPath>
+    </PropertyGroup>
+</Project>

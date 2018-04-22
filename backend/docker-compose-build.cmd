@@ -1,0 +1,19 @@
+cd messages
+call ./build
+cd ..
+cd backend-host
+call ./build
+cd ..
+cd products-service
+call ./build
+cd ..
+cd authenticator-service
+call ./build
+cd ..
+cd orders-service
+call ./build
+cd ..
+cd tracking-service
+call ./build
+
+echo Done!
