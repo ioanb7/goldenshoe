@@ -9,7 +9,7 @@ export default () => (
             <p>Do you know what size fits you? Download the below PDF to make sure before purchase.</p>
             
             <Link href="/print-download" >
-                <a className="button" target="_blank">Download here</a>
+                <a className="button">Download here</a>
             </Link>
         </div>
     </Layout>

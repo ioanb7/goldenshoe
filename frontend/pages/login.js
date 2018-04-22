@@ -4,6 +4,7 @@ import fetch from 'isomorphic-unfetch'
 import React from 'react'// using an ES6 transpiler, like babel
 import { render } from 'react-dom'
 import { ThemeContext } from '../components/MyContext.js'
+import config from '../config.js'
 
 class Login extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Login extends React.Component {
     }
 
       
-    fetch('http://192.168.99.100/api/authenticator/login', {
+    fetch(`${config.baseUrl}/api/authenticator/login`, {
         method: 'POST',
         body:    JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }

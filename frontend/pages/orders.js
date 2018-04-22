@@ -4,6 +4,7 @@ import fetch from 'isomorphic-unfetch'
 import React from 'react'// using an ES6 transpiler, like babel
 import { render } from 'react-dom'
 import Link from 'next/link'
+import config from '../config.js'
 
 class Orders extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Orders extends React.Component {
 
   componentDidMount() {
     var self = this;
-    fetch(`http://192.168.99.100/api/order`, {
+    fetch(`${config.baseUrl}/api/order`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage["jwt"] }
     })

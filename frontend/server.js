@@ -33,6 +33,10 @@ app.prepare()
     const queryParams = { id: req.params.id }
     app.render(req, res, actualPage, queryParams)
   })
+  server.get('/uploads/products/:pid/:id', (req, res) => {
+    var file = __dirname + '/uploads/products/' + req.params.pid + '/' + req.params.id
+    res.sendFile(file); // Set disposition and send it.
+  })
 
   server.get('*', (req, res) => {
     return handle(req, res)

@@ -83,18 +83,8 @@ class Layout extends React.Component {
         </div>
       </div>
         <div className="column sidebar">
-          <p>Text</p>
-          <p>Text</p>
-          <p>Text</p>
-          <p>Text</p>
-          <p>Text</p>
-          <p>Text</p>
-          <p>Text</p>
-          <p>Text</p>
-          <p>Text</p>
-          <p>Text</p>
-          <p>Text</p>
-          <p>Text</p>
+          <h3>About us</h3>
+          <p>Fine quality shoes</p>
         </div>
       </div>
       

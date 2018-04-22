@@ -4,6 +4,7 @@ import fetch from 'isomorphic-unfetch'
 import Router from 'next/router'
 import React from 'react'// using an ES6 transpiler, like babel
 import { render } from 'react-dom'
+import config from '../config.js'
 
 class CreateOrder extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class CreateOrder extends React.Component {
       'ProductId': this.state.id,
     }
       
-    fetch('http://192.168.99.100/api/order', {
+    fetch(`${config.baseUrl}/api/order`, {
         method: 'POST',
         body:    JSON.stringify(data),
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage["jwt"] }

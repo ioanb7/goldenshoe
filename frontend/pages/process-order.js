@@ -4,6 +4,7 @@ import fetch from 'isomorphic-unfetch'
 import Router from 'next/router'
 import React from 'react'// using an ES6 transpiler, like babel
 import { render } from 'react-dom'
+import config from '../config.js'
 
 class ProcessOrder extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class ProcessOrder extends React.Component {
   componentDidMount() {
     //get order
     var self = this;
-    fetch(`http://192.168.99.100/api/order/${this.state.id}`, {
+    fetch(`${config.baseUrl}/api/order/${this.state.id}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage["jwt"] }
     })
@@ -55,7 +56,7 @@ class ProcessOrder extends React.Component {
     }
     debugger;
       
-    fetch('http://192.168.99.100/api/order/process', {
+    fetch(`${config.baseUrl}/api/order/process`, {
         method: 'POST',
         body:    JSON.stringify(data),
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage["jwt"] }

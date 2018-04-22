@@ -2,6 +2,7 @@ import fetch from 'isomorphic-unfetch'
 
 import React from 'react'// using an ES6 transpiler, like babel
 import { render } from 'react-dom'
+import config from '../config.js'
 
 class TrackingVisualiser extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class TrackingVisualiser extends React.Component {
 
   componentDidMount() {
     var self = this;
-    fetch(`http://192.168.99.100/api/tracking/${this.state.id}`, {
+    fetch(`${config.baseUrl}/api/tracking/${this.state.id}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage["jwt"] }
     })

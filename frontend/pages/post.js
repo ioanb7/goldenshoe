@@ -1,6 +1,7 @@
 import Layout from '../components/MyLayout.js'
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
+import config from '../config.js'
 
 var onerror = (e) => {
     e.target.style.display='none'
@@ -18,7 +19,9 @@ const Post =  (props) => (
         </div>
         <div className="gallery">
             { props.show.images.length ? (
-                <img src={props.show.images[0].filename} onError={onerror}/>
+                <div className="parent">
+                    <img src={props.show.images[0].filename} onError={onerror}/>
+                </div>
             ) : (
                 <p>Missing Image :(</p>
             )}
@@ -29,7 +32,7 @@ const Post =  (props) => (
         <p>Reserved: <span>{props.show.reserved}</span></p>
         <p>&nbsp;=>&nbsp;Stock available right now: <span>{props.show.stock - props.show.reserved}</span></p>
         <p>Shoe size: <span>{props.show.shoeSize}</span>&nbsp;
-            <Link href="/print" target="_blank">
+            <Link href="/print">
                 <a className="">Is this correct for me?</a>
             </Link>
         </p>
@@ -56,13 +59,14 @@ const Post =  (props) => (
             display:inline-block;
             margin:0 auto;
           }
+
       `}</style>
     </Layout>
 )
 
 Post.getInitialProps = async function (context) {
   const { id } = context.query
-  const res = await fetch(`http://192.168.99.100:80/api/products/${id}`)
+  const res = await fetch(`${config.baseUrl}/api/products/${id}`)
   const show = await res.json()
   console.log(`Fetched show: ${show.title}`)
 
