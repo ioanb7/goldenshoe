@@ -23,7 +23,7 @@ const Shoe = (props) => (
             </a>
             
             <p>$<span>{props.product.price}</span></p>
-            <a className="button is-primary">BUY NOW</a>
+            <a className="button is-primary">See more</a>
             
         </div>
         </Link>
