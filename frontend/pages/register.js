@@ -1,6 +1,7 @@
 import Layout from '../components/MyLayout.js'
 import fetch from 'isomorphic-unfetch'
 
+import Router from 'next/router'
 import React from 'react'// using an ES6 transpiler, like babel
 import { render } from 'react-dom'
 import config from '../config.js'
@@ -56,9 +57,11 @@ class Login extends React.Component {
     })
         .then(res => res.json())
         .then(json => {
-          console.log(json)
-          
-          //TODO: redirect, show message with alert
+          //alert("OK");
+          if(json.message == "Register success") {
+            const href = `/login`
+            Router.push(href, href, { shallow: false })
+          }
         })
         .catch(function(error) {
             console.log(error);

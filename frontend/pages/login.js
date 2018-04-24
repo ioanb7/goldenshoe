@@ -2,6 +2,7 @@ import Layout from '../components/MyLayout.js'
 import fetch from 'isomorphic-unfetch'
 
 import React from 'react'// using an ES6 transpiler, like babel
+import Router from 'next/router'
 import { render } from 'react-dom'
 import { ThemeContext } from '../components/MyContext.js'
 import config from '../config.js'
@@ -41,9 +42,12 @@ class Login extends React.Component {
     })
         .then(res => res.json())
         .then(json => {
+            //alert("OK");
             localStorage["jwt"] = json.apiKey;
             window.setLoggedIn(true) // <HACK>
-            //TODO: redirect
+
+            const href = `/`
+            Router.push(href, href, { shallow: true })
         })
         .catch(function(error) {
             console.log(error);

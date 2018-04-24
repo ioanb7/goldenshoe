@@ -34,6 +34,11 @@ export const NavBar = (props) => (
 						<a className="navbar-item" style={linkStyle}>My Orders</a>
 					</Link>
 			)}
+			{context.loggedIn && (
+					<Link href="/logout">
+						<a className="navbar-item" style={linkStyle}>Logout</a>
+					</Link>
+			)}
 		
 		</div>
       )}
