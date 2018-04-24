@@ -61,25 +61,30 @@ namespace aspcore.Controllers
         [HttpPost("process")]
         public async Task<object> ProcessOrder([FromBody] PorcessOrderInput cmd)
         {
+            var resultProduct = await products.GetProductById(cmd.OrderId);
+            ProductResponse resultProductResponse = null;
+
+            if (resultProduct is ProductResponse)
+            {
+                resultProductResponse = (ProductResponse)resultProduct;
+            }
+            else
+            {
+                throw new Exception("Invalid response from product service");
+            }
+
+
             var resultOrder = await orders.GetOrderById(cmd.OrderId, GetJwt());
 
             if (resultOrder is Order.OrderObject)
             {
                 var resultOrderResponse = (Order.OrderObject)resultOrder;
+                
 
-                var resultProduct = await products.GetProductById(resultOrderResponse.ProductId);
-
-                if (resultProduct is ProductResponse)
-                {
-                    var resultProductResponse = (ProductResponse) resultProduct;
-
-
-                    var resultFinishedProduct = await products.ProductSold(resultOrderResponse.ProductId, cmd.OrderId);
-                    //SUCCESS
-                    return await orders.ProcessOrder(cmd.OrderId, cmd.CardId, cmd.CardCode, resultProductResponse.Product.Price, GetJwt());
-                }
-
-                return resultProduct;
+                var resultFinishedProduct = await products.ProductSold(resultOrderResponse.ProductId, cmd.OrderId);
+                //SUCCESS
+                return await orders.ProcessOrder(cmd.OrderId, cmd.CardId, cmd.CardCode, resultProductResponse.Product.Price, GetJwt());
+                
             }
             return resultOrder;
         }
@@ -87,9 +92,13 @@ namespace aspcore.Controllers
         [HttpPost]
         public async Task<object> CreateOrder([FromBody]Messages.Order.CreateTempOrderCommand cmd)
         {
+            ProductResponseSuccess productResponse = (ProductResponseSuccess)await products.GetProductById(cmd.ProductId);
+            decimal price = productResponse.Product.Price;
 
-            decimal price = ((ProductResponseSuccess) await products.GetProductById(cmd.ProductId)).Product.Price;
-
+            if (productResponse.Product.Stock < 1)
+            {
+                throw new Exception("Invalid request");
+            }
 
             Console.WriteLine("Order/CreateOrder");
             var result = await orders.CreateOrder(cmd.ProductId, price, GetJwt());
