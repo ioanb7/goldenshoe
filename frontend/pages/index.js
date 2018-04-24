@@ -22,7 +22,7 @@ const Shoe = (props) => (
                     ) : <p>Missing Image :(</p>}
             </a>
             
-            <p>$<span>{props.product.price}</span></p>
+            <p>£<span>{props.product.price}</span></p>
             <a className="button is-primary">See more</a>
             
         </div>

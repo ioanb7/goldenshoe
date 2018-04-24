@@ -27,7 +27,7 @@ const Post =  (props) => (
             )}
         </div>
     
-        <p>$<span>{props.show.price}</span></p>
+        <p>£<span>{props.show.price}</span></p>
         <p>Stock total:<span>{props.show.stock}</span></p>
         <p>Reserved: <span>{props.show.reserved}</span></p>
         <p>&nbsp;=>&nbsp;Stock available right now: <span>{props.show.stock - props.show.reserved}</span></p>
