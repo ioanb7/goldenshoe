@@ -3,6 +3,8 @@
 ## About
 This is an experiment.
 
+![Architecture diagram](https://user-images.githubusercontent.com/9282777/39178482-bb97a0cc-47a9-11e8-9eed-45ec71ae00e0.png)
+
 ## Ports used:
 - backend-host (api gateway): 80:8080
 - authenticator-service: 9000

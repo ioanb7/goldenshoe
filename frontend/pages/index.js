@@ -47,6 +47,8 @@ const Shoe = (props) => (
         .button {
             float:right;
         }
+
+        
         `}
         </style>
     </div>
@@ -98,6 +100,7 @@ const Index = (props) => (
             background-color:#f5f5f5;
         }
 
+
         
     `}</style>
     
@@ -106,7 +109,7 @@ const Index = (props) => (
 )
 
 Index.getInitialProps = async function() {
-  const res = await fetch(`${config.baseUrl}/api/products`)
+  const res = await fetch(config.getApi(`/api/products`))
   const data = await res.json()
   //console.log(data)
   //console.log(`Show data fetched. Count: ${data.length}`)

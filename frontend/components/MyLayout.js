@@ -65,12 +65,12 @@ class Layout extends React.Component {
   render() {
     return (
     <ThemeContext.Provider value={this.state}>
-      <Toolbar changeTheme={this.toggleTheme} />
     <div style={layoutStyle}>
       <Head>
         <title>My page title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"/>
+      <link rel="stylesheet" href="/css/style.css"/>
           <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
       </Head>
     
@@ -83,6 +83,13 @@ class Layout extends React.Component {
         </div>
       </div>
         <div className="column sidebar">
+          <h3>Your questions, answered</h3>
+          <p className="question">Return date?</p>
+          <p className="answer">You can go on the 'orders' page and view the most recent location of your package</p>
+          <p className="question">Return date?</p>
+          <p className="answer">You can go on the 'orders' page and view the most recent location of your package</p>
+          <p className="question">Return date?</p>
+          <p className="answer">You can go on the 'orders' page and view the most recent location of your package</p>
           <h3>About us</h3>
           <p>Fine quality shoes</p>
         </div>
@@ -110,6 +117,16 @@ class Layout extends React.Component {
           }
           .footer {
             padding: 3rem 1.5rem 3rem;
+          }
+          .question::first-letter { 
+            font-style: italic;
+          }
+          .question {
+            margin-top:5px;
+          }
+
+          h3 {
+            margin-top:15px;
           }
       `}</style>
 

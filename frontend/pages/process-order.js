@@ -28,7 +28,8 @@ class ProcessOrder extends React.Component {
   componentDidMount() {
     //get order
     var self = this;
-    fetch(`${config.baseUrl}/api/order/${this.state.id}`, {
+    //fetch(`${config.baseUrl}/api/order/${this.state.id}`, {
+    fetch(config.getApi(`/api/order/${this.state.id}`), { 
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage["jwt"] }
     })

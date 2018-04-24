@@ -66,11 +66,15 @@ const Post =  (props) => (
 
 Post.getInitialProps = async function (context) {
   const { id } = context.query
-  const res = await fetch(`${config.baseUrl}/api/products/${id}`)
+  const res = await fetch(config.getApi(`/api/products/${id}`))
   const show = await res.json()
   console.log(`Fetched show: ${show.title}`)
 
   show.buyUrl = "/create-order/" + show.id
+  
+  if(show.images.length > 0) {
+    show.images[0].filename = "/uploads/products/" + show.id + "/1.jpg"
+  }
   return { show }
 }
 

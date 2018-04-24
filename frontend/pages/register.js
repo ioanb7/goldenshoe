@@ -11,6 +11,7 @@ class Login extends React.Component {
     
     this.state = {name:'',username: '',password: '',password2: '',email: ''};
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handlePassword2Change = this.handlePassword2Change.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -47,13 +48,18 @@ class Login extends React.Component {
       'Email': this.state.email
     }
       
-    fetch(`${config.baseUrl}/api/authenticator/Register`, {
+    //fetch(`${config.baseUrl}/api/authenticator/Register`, {
+    fetch(config.getApi(`/api/authenticator/Register`), { 
         method: 'POST',
         body:    JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }
     })
         .then(res => res.json())
-        .then(json => console.log(json))
+        .then(json => {
+          console.log(json)
+          
+          //TODO: redirect, show message with alert
+        })
         .catch(function(error) {
             console.log(error);
         });

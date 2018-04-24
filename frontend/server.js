@@ -37,6 +37,10 @@ app.prepare()
     var file = __dirname + '/uploads/products/' + req.params.pid + '/' + req.params.id
     res.sendFile(file); // Set disposition and send it.
   })
+  server.get('/css/style.css', (req, res) => {
+    var file = __dirname + '/css/style.css'
+    res.sendFile(file); // Set disposition and send it.
+  })
 
   server.get('*', (req, res) => {
     return handle(req, res)

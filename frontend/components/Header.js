@@ -34,11 +34,6 @@ export const NavBar = (props) => (
 						<a className="navbar-item" style={linkStyle}>My Orders</a>
 					</Link>
 			)}
-
-        <button
-          {...props}
-          style={{backgroundColor: context.theme.foreground}}
-        />
 		
 		</div>
       )}

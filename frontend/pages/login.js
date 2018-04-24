@@ -33,7 +33,8 @@ class Login extends React.Component {
     }
 
       
-    fetch(`${config.baseUrl}/api/authenticator/login`, {
+    //fetch(`${config.baseUrl}/api/authenticator/login`, {
+    fetch(config.getApi(`/api/authenticator/login`), { 
         method: 'POST',
         body:    JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }
@@ -42,6 +43,7 @@ class Login extends React.Component {
         .then(json => {
             localStorage["jwt"] = json.apiKey;
             window.setLoggedIn(true) // <HACK>
+            //TODO: redirect
         })
         .catch(function(error) {
             console.log(error);

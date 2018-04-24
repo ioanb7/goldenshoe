@@ -17,7 +17,8 @@ class CreateOrder extends React.Component {
       'ProductId': this.state.id,
     }
       
-    fetch(`${config.baseUrl}/api/order`, {
+    //fetch(`${config.baseUrl}/api/order`, {
+    fetch(config.getApi(`/api/order`), { 
         method: 'POST',
         body:    JSON.stringify(data),
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage["jwt"] }

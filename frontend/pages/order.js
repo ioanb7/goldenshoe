@@ -14,7 +14,8 @@ class Order extends React.Component {
 
   componentDidMount() {
     var self = this;
-    fetch(`${config.baseUrl}/api/order/${this.state.id}`, {
+    //fetch(`${config.baseUrl}/api/order/${this.state.id}`, {
+    fetch(config.getApi(`/api/order/${this.state.id}`), { 
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage["jwt"] }
     })

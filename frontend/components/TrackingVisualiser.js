@@ -8,11 +8,21 @@ class TrackingVisualiser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {'id' : props.id, 'loading': true, 'progress': 0}
+    this.fetchData = this.fetchData.bind(this);
   }
 
   componentDidMount() {
+    this.fetchData();
     var self = this;
-    fetch(`${config.baseUrl}/api/tracking/${this.state.id}`, {
+    setInterval(function() {
+        self.fetchData();
+    }, 5000)
+  }
+
+  fetchData() {
+    var self = this;
+    //fetch(`${config.baseUrl}/api/tracking/${this.state.id}`, {
+    fetch(config.getApi(`/api/tracking/${this.state.id}`), { 
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage["jwt"] }
     })
